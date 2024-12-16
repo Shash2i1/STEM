@@ -1,0 +1,29 @@
+.toggle-switch {
+    width: 40px;
+    height: 20px;
+    background-color: #d1d5db; /* Tailwind's gray-300 */
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .toggle-checkbox:checked + .toggle-switch {
+    background-color: #3db3f3; /* Tailwind's blue-600 */
+  }
+  
+  .toggle-dot {
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff; /* White */
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .toggle-checkbox:checked + .toggle-switch .toggle-dot {
+    transform: translateX(20px);
+  }
+  
