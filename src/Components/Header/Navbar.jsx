@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <section className="flex justify-center w-full sticky top-0 z-50 md:px-24 bg-gray-900">
+    <section className="flex justify-center w-full sticky top-0 z-50 md:px-24 bg-gray-900 py-2">
       <div className="flex justify-between items-center w-full max-w-[1400px] p-2 sm:p-4 px-8">
         {/* Left section: Logo */}
         <Link to='/'>
