@@ -12,9 +12,8 @@ function Input({
         <div className='w-full p-2'>
             {label &&
                 <label 
-                
                 htmlFor={id} 
-                className='flex items-left'>
+                className='flex items-left font-bold'>
                     {label}
                 </label>
             }

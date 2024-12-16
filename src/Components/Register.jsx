@@ -29,7 +29,7 @@ function Register() {
   ];
 
   // Events List must mention here
-  const eventOptions = ["Model Expo", "Event 2", "Event 3"];
+  const eventOptions = ["Model Expo", "Sparkore", "Bugged out","Electrivia", "Evolvance"];
 
   // Method to handle the register
   const handleRegister = async (data) => {
@@ -133,7 +133,7 @@ function Register() {
           />
         )}
         <div>
-          <label className="block mb-2 text-gray-700">
+          <label className="block mb-2  font-bold">
             Which is your favorite event?
           </label>
           {eventOptions.map((event, index) => (

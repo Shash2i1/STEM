@@ -10,7 +10,7 @@ function Select({
 
   return (
     <div className='w-full'>
-      {label && <label htmlFor={id} className='flex flex-left'>{label}</label>}
+      {label && <label htmlFor={id} className='flex flex-left font-bold'>{label}</label>}
       <select
         {...props}
         id={id}
