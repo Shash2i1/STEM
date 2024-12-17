@@ -38,8 +38,8 @@ const Navbar = () => {
               </div>
             </button>
           ) : (
-            <Link to='/register'>
-              <h2 className="text-white">signIn</h2>
+            <Link to='/login'>
+              <h2 className="text-white">SignIn</h2>
             </Link>
           )}
 
