@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import Events from "./Events";
+import StallSection from "./StallSection";
 import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
@@ -89,6 +90,7 @@ const Hero = () => {
         </style>
       </section>
       <Events />
+      <StallSection/>
     </>
   );
 };

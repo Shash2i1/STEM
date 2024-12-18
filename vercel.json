@@ -4,6 +4,13 @@
         "source": "/(.*)",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "redirects": [
+    {
+      "source": "/",
+      "destination": "https://stem.aitm.edu.in",
+      "permanent": true
+    }
+  ]
   }
   
