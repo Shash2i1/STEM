@@ -6,6 +6,7 @@ import  appwriteService from './appwrite/auth'
 import Navbar from './Components/Header/Navbar'
 import Footer from './Components/footer/Footer'
 import { Outlet } from 'react-router-dom'
+import {ScrollToTopButton} from './Components/index'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -30,6 +31,7 @@ function App() {
         <Navbar />
         <main className=''>
          <Outlet/>
+         <ScrollToTopButton/>
         </main>
         <Footer />
       </div>

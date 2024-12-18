@@ -1,4 +1,4 @@
-import {Client, Databases, ID, Account} from 'appwrite'
+import {Client, Databases, ID, Account, Query} from 'appwrite'
 import conf from '../ConfigAppwrite/Conf'
 
 export class appwriteService {
@@ -105,18 +105,31 @@ async retrieveData(stemID){
 }
 
 // Retrieve all participants data
-async retrieveAllData(){
-    try{
-        return this.database.listDocuments(
-            conf.appwriteDatabaseId,
-            conf.appwriteCollectionId,
-        )
+async retrieveAllData() {
+  try {
+    let documents = [];
+    let page = 0;
+    const limit = 100; // Maximum allowed limit per request
+
+    while (true) {
+      const response = await this.database.listDocuments(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        [Query.limit(limit), Query.offset(page * limit)]
+      );
+      documents = [...documents, ...response.documents];
+
+      if (response.documents.length < limit) break; // Stop when fewer than `limit` documents are returned
+      page++;
     }
-    catch(error){
-        console.log(error)
-        return false;
-    }
+
+    return { documents };
+  } catch (error) {
+    console.error("Error fetching all data:", error);
+    return false;
+  }
 }
+
 
 }
 const service = new appwriteService();

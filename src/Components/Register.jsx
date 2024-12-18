@@ -12,21 +12,11 @@ import '../CSS/ToggleSwitch.css';
 
 function Register() {
   const [error, setError] = useState("");
-  const [isOtherCollege, setIsOtherCollege] = useState(false);
-  const [collegeName, setCollegeName] = useState("");
   const [eventList, setEventList] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const dispatch = useDispatch();
-
-  // College List should mention here
-  const collegesList = [
-    { value: "", label: "Select College", disabled: true, selected: true },
-    { value: "Bhatkal", label: "Bhatkal", disabled: true, selected: false },
-    { value: "Anjuman College", label: "Anjuman College", disabled: false },
-    { value: "Anjuman Girls College", label: "Anjuman Girls College", disabled: false },
-  ];
 
   // Events List must mention here
   const eventOptions = ["Model Expo", "Sparkore", "Bugged out","Electrivia", "Evolvance"];
@@ -37,12 +27,7 @@ function Register() {
     setLoading(true)
     setError("");
 
-    // College validation
-    if (!collegeName && !data.otherCollegeName) {
-      setError("Please select a college or enter the name of another college.");
-      return;
-    }
-
+   
     try {
       // First, register the student
       const user = await appwriteService.registerStudents(data);
@@ -56,7 +41,7 @@ function Register() {
         const db = await appwriteService.addParticipantInfo(
           user.$id,
           data.fullName,
-          collegeName || data.otherCollegeName,
+          data.otherCollegeName,
           eventList,
           data.email,
           data.dish,
@@ -109,29 +94,14 @@ function Register() {
           className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           {...register("fullName", { required: "Full name is required" })}
         />
-        <Select
-          label="Select College"
-          options={collegesList}
-          onChange={(e) => setCollegeName(e.target.value)}
-          className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-        />
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            onChange={(e) => setIsOtherCollege(e.target.checked)}
-            className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring focus:ring-blue-300"
-          />
-          <label className="text-gray-700">Other College?</label>
-        </div>
-        {isOtherCollege && (
+
           <Input
             label="Enter College Name"
             type="text"
             placeholder="College Name"
             className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-            {...register("otherCollegeName")}
+            {...register("otherCollegeName",{required: true})}
           />
-        )}
         <div>
           <label className="block mb-2  font-bold">
             Which is your favorite event?

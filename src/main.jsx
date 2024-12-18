@@ -11,6 +11,7 @@ import Admin from './Components/Pages/Admin.jsx'
 import Home from './Components/Pages/Home.jsx';
 import ProfilePage from './Components/Pages/ProfilePage.jsx'
 import AuthLayout from './Components/AuthLayout.jsx'
+import MoreInfo from './Components/Pages/MoreInfo.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <RegisterPage/>,
+        element: <RegisterPage />,
       },
       {
         path: "/login",
@@ -31,11 +32,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <Admin/>,
+        element: <Admin />,
+      },
+      {
+        path: "/moreinfo",
+        element: <MoreInfo />
       },
       {
         path: "/profile",
-        element: <AuthLayout authentication><ProfilePage/></AuthLayout>,
+        element: <AuthLayout authentication><ProfilePage /></AuthLayout>,
       },
     ],
   },

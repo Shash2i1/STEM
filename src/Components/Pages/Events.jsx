@@ -257,7 +257,7 @@ const EventsList = () => {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
                     <div className="bg-white text-black rounded-lg shadow-lg p-6 w-full max-w-4xl max-h-[90%] overflow-auto">
                         {/* Modal Header */}
-                        <div className="flex justify-between items-center mb-4">
+                        <div className="flex justify-between items-center mb-4 text-red-500">
                             <h2 className="text-3xl font-bold">{selectedEvent.name}</h2>
                             <button
                                 onClick={() => setSelectedEvent(null)}

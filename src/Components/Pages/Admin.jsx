@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import appwriteService from "../../appwrite/auth";
+import { Link } from "react-router-dom";
 
 function Admin() {
   const [participantsList, setParticipants] = useState([]);
   const contentRef = useRef(null); // Create a ref for the printable content
 
   const fetchData = async () => {
-    console.log("ref", contentRef.current)
     try {
       const data = await appwriteService.retrieveAllData();
       if (data) {
@@ -35,6 +35,13 @@ function Admin() {
       >
         Download as PDF
       </button>
+
+      {/*Total Register */}
+      <div className="w-full px-8 flex items-center justify-around">
+      <p>Total Registered : {participantsList.length}</p>
+      <Link to="/moreinfo"
+      className="text-blue-400 hover:text-blue-700">More Info</Link>
+      </div>
 
       {/* Printable Content */}
       <div
