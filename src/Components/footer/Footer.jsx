@@ -42,19 +42,19 @@ const Footer = () => {
 
         {/* Right Section */}
         <div className="flex gap-4 mt-4 md:mt-0">
-          <a href="#" className="hover:text-blue-500">
+          <a href="https://www.facebook.com/anjumanitm/" className="hover:text-blue-500">
             <Icon icon="ic:baseline-facebook" className="w-6 h-6" />
           </a>
-          <a href="#" className="hover:text-pink-500">
+          <a href="https://www.instagram.com/anjumanitm/" className="hover:text-pink-500">
             <Icon icon="mdi:instagram" className="w-6 h-6" />
           </a>
           <a href="#" className="hover:text-blue-400">
             <Icon icon="mdi:twitter" className="w-6 h-6" />
           </a>
-          <a href="#" className="hover:text-blue-700">
+          <a href="https://www.linkedin.com/school/anjumanitm/posts/?feedView=all" className="hover:text-blue-700">
             <Icon icon="mdi:linkedin" className="w-6 h-6" />
           </a>
-          <a href="#" className="hover:text-red-600">
+          <a href="https://www.youtube.com/c/AITMBhatkal" className="hover:text-red-600">
             <Icon icon="mdi:youtube" className="w-6 h-6" />
           </a>
         </div>
