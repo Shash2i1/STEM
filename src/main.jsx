@@ -12,6 +12,7 @@ import Home from './Components/Pages/Home.jsx';
 import ProfilePage from './Components/Pages/ProfilePage.jsx'
 import AuthLayout from './Components/AuthLayout.jsx'
 import MoreInfo from './Components/Pages/MoreInfo.jsx';
+import Contact from './Components/Pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <AuthLayout authentication><ProfilePage /></AuthLayout>,
       },
+      {
+        path: "/contact",
+        element : <Contact/>
+      }
     ],
   },
 ]);

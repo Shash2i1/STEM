@@ -43,7 +43,7 @@ const events = [
             ],
             Coordinators : ["Shrishail Bhat - 9739461774"]
         },
-        
+
     },
     {
         id: 2,
@@ -56,7 +56,7 @@ const events = [
             rules: [
                 "Team of two is cumpulsory, single person cannot participate",
                 "ID card is cumpulsory",
-                
+
             ],
             rounds: [
                 {
@@ -215,128 +215,120 @@ const events = [
         },
     },
 ];
+
+
 const EventsList = () => {
     const [selectedEvent, setSelectedEvent] = useState(null);
 
     return (
-        <div className="bg-gray-900 text-white p-8 min-h-screen">
-            <h1 className="text-3xl text-center font-bold mb-6">EVENTS</h1>
-            {/* Events Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {events.map((event) => (
-                    <div
-                        key={event.id}
-                        className="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden group"
-                    >
-                        {/* Event Poster */}
-                        <img
-                            src={event.image}
-                            alt={event.name}
-                            className="w-full h-64 object-contain"
-                        />
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button
-                                onClick={() => setSelectedEvent(event)}
-                                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
-                            >
-                                Learn More
-                            </button>
-                        </div>
-                        {/* Event Title and Description */}
-                        <div className="p-4">
-                            <h3 className="text-2xl font-bold">{event.name}</h3>
-                            <p className="text-sm mt-2">{event.description}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Modal */}
-            {selectedEvent && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
-                    <div className="bg-white text-black rounded-lg shadow-lg p-6 w-full max-w-4xl max-h-[90%] overflow-auto">
-                        {/* Modal Header */}
-                        <div className="flex justify-between items-center mb-4 text-red-500">
-                            <h2 className="text-3xl font-bold">{selectedEvent.name}</h2>
-                            <button
-                                onClick={() => setSelectedEvent(null)}
-                                className="text-red-500 font-bold text-xl hover:text-red-700"
-                            >
-                                X
-                            </button>
-                        </div>
-
-                        {/* Event Image */}
-                        <img
-                            src={selectedEvent.image}
-                            alt={selectedEvent.name}
-                            className="w-full h-64 object-contain rounded-lg mb-4"
-                        />
-
-                        {/* Overview Section */}
-                        <p className="text-gray-800 text-lg mb-4">
-                            <span className="font-semibold">Overview:</span>{" "}
-                            {selectedEvent.details.overview}
-                        </p>
-
-                        {/* Rules Section */}
-                        <div className="mb-4">
-                            <h3 className="text-2xl font-semibold mb-2">Rules:</h3>
-                            <ul className="list-disc list-inside text-gray-700">
-                                {selectedEvent.details.rules.map((rule, index) => (
-                                    <li key={index} className="mb-1">
-                                        {rule}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Rounds Section */}
-                        <div>
-                            <h3 className="text-2xl font-semibold mb-2">Rounds:</h3>
-                            {selectedEvent.details.rounds.map((round, index) => (
-                                <div
-                                    key={index}
-                                    className="mb-4 p-4 bg-gray-100 rounded-lg shadow"
+        <section className="bg-cover bg-center bg-no-repeat px-8 py-16">
+            <div className="container mx-auto">
+                <h1 className="text-4xl lg:text-6xl text-white font-bold text-center mb-12">EVENTS</h1>
+                
+                {/* Events Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {events.map((event) => (
+                        <div
+                            key={event.id}
+                            className="relative bg-gray-900 bg-opacity-50 rounded-lg overflow-hidden group shadow-lg transform transition duration-300 hover:scale-105"
+                        >
+                            {/* Event Poster */}
+                            <img
+                                src={event.image}
+                                alt={event.name}
+                                className="w-full lg:h-64 md:h-64 object-cover transition duration-300 group-hover:opacity-70"
+                            />
+                            
+                            {/* Event Details */}
+                            <div className="p-6 text-white">
+                                <h3 className="text-2xl font-bold mb-2 text-[#da4ea2]">{event.name}</h3>
+                                <p className="text-gray-300 text-sm mb-4">{event.description}</p>
+                                
+                                <button
+                                    onClick={() => setSelectedEvent(event)}
+                                    className="bg-[#da4ea2] hover:bg-purple-700 text-white font-medium px-4 py-2 rounded-xl transition duration-300"
                                 >
-                                    <h4 className="text-xl font-bold">{round.title}</h4>
-                                    <ul className="list-disc list-inside text-gray-700">
-                                        {round.description.map((round, index) => (
-                                            <li key={index} className="mb-1">
-                                                {round}
-                                            </li>
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Modal */}
+                {selectedEvent && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 overflow-y-auto">
+                        <div className="bg-gray-900 text-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+                            {/* Modal Header */}
+                            <div className="flex justify-between items-center p-6 border-b border-gray-700">
+                                <h2 className="text-3xl font-bold text-[#da4ea2]">{selectedEvent.name}</h2>
+                            </div>
+
+                            {/* Modal Content */}
+                            <div className="p-6">
+                                {/* Event Image */}
+                                <img
+                                    src={selectedEvent.image}
+                                    alt={selectedEvent.name}
+                                    className="w-full object-cover rounded-lg mb-6"
+                                />
+
+                                {/* Overview */}
+                                <section className="mb-6">
+                                    <h3 className="text-2xl font-semibold text-[#da4ea2] mb-3">Overview</h3>
+                                    <p className="text-gray-300">{selectedEvent.details.overview}</p>
+                                </section>
+
+                                {/* Rules */}
+                                <section className="mb-6">
+                                    <h3 className="text-2xl font-semibold text-[#da4ea2] mb-3">Rules</h3>
+                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                                        {selectedEvent.details.rules.map((rule, index) => (
+                                            <li key={index}>{rule}</li>
                                         ))}
                                     </ul>
+                                </section>
+
+                                {/* Rounds */}
+                                <section className="mb-6">
+                                    <h3 className="text-2xl font-semibold text-[#da4ea2] mb-3">Rounds</h3>
+                                    {selectedEvent.details.rounds.map((round, index) => (
+                                        <div key={index} className="bg-gray-800 rounded-lg p-4 mb-4">
+                                            <h4 className="text-xl font-bold text-[#da4ea2] mb-2">{round.title}</h4>
+                                            <ul className="list-disc list-inside text-gray-300 space-y-2">
+                                                {round.description.map((desc, descIndex) => (
+                                                    <li key={descIndex}>{desc}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </section>
+
+                                {/* Coordinators */}
+                                <section>
+                                    <h3 className="text-2xl font-semibold text-[#da4ea2] mb-3">Coordinators</h3>
+                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                                        {selectedEvent.details.Coordinators.map((coordinator, index) => (
+                                            <li key={index}>{coordinator}</li>
+                                        ))}
+                                    </ul>
+                                </section>
+
+                                {/* Close Button */}
+                                <div className="mt-8 text-right">
+                                    <button
+                                        onClick={() => setSelectedEvent(null)}
+                                        className="bg-[#da4ea2] hover:bg-purple-700 text-white font-medium px-6 py-3 rounded-xl transition duration-300"
+                                    >
+                                        Close
+                                    </button>
                                 </div>
-                            ))}
-                        </div>
-
-                        {/* Coordinators Section */}
-                        <div className="mb-4">
-                            <h3 className="text-2xl font-semibold mb-2">Coordinators</h3>
-                            <ul className="list-disc list-inside text-gray-700">
-                                {selectedEvent.details.Coordinators.map((Coordinator, index) => (
-                                    <li key={index} className="mb-1">
-                                        {Coordinator}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Close Button */}
-                        <div className="flex justify-end">
-                            <button
-                                onClick={() => setSelectedEvent(null)}
-                                className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-2 rounded"
-                            >
-                                Close
-                            </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+        </section>
     );
 };
 
