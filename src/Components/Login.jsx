@@ -38,7 +38,7 @@ function Login() {
     };
 
     return (
-        <div className="max-w-lg mx-auto p-6 bg-gray-900 bg-opacity-50 rounded-2xl shadow-2xl w-full">
+        <div className="max-w-lg mx-auto p-6 bg-gray-900 rounded-2xl shadow-2xl w-full">
             <h2 className="font-bold text-4xl mb-6 text-center text-[#da4ea2]">Login</h2>
             {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
             <form onSubmit={handleSubmit(handleLogin)} className="space-y-6">

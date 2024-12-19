@@ -3,7 +3,7 @@ import Register from '../Register'
 
 function RegisterPage() {
     return (
-        <div className='bg-gray-800 md:py-6 p-2 flex items-center justify-center'>
+        <div className='bg-transparent md:py-6 p-5 py-16 flex items-center justify-center'>
             <Register />
         </div>
     )

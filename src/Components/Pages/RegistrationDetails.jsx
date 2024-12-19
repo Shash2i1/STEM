@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import eventService from '../../appwrite/EventsReg';
+import eventService from '../../appwrite/eventsReg';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver';
 

@@ -82,7 +82,7 @@ function Register() {
 
   return (
     <section className="flex flex-col w-full items-center justify-center bg-cover bg-center bg-no-repeat ">
-      <div className="w-full max-w-lg bg-gray-900 bg-opacity-50 rounded-2xl shadow-2xl p-8">
+      <div className="w-full max-w-lg bg-gray-900 rounded-2xl shadow-2xl p-8">
         <h2 className="text-4xl font-bold text-center mb-6 text-[#da4ea2]">Register</h2>
 
         {error && (

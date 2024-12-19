@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Input } from '../index'
 import { toast, ToastContainer } from 'react-toastify'
-import eventService from '../../appwrite/EventsReg'
+import eventService from '../../appwrite/eventsReg'
 import {Loader} from '../index'
 
 function EventsRegistration() {
