@@ -48,7 +48,7 @@ const Hero = () => {
           <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left space-y-6 order-2 lg:order-1
             opacity-0 animate-fade-in duration-1000 ease-out delay-300">
             <h1 className="text-4xl lg:text-6xl text-white font-bold 
-              opacity-0 animate-slide-in-left duration-700 delay-500">
+              opacity-0 animate-slide-in-left duration-700 delay-500 font-mono">
               STEM-2024
             </h1>
             <p className="text-md text-gray-300 lg:text-left font-sans
