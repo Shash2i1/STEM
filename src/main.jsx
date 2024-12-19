@@ -13,6 +13,8 @@ import ProfilePage from './Components/Pages/ProfilePage.jsx'
 import AuthLayout from './Components/AuthLayout.jsx'
 import MoreInfo from './Components/Pages/MoreInfo.jsx';
 import Contact from './Components/Pages/Contact.jsx';
+import EventsRegistration from './Components/Pages/EventsRegistration.jsx'
+import RegistrationDetails from './Components/Pages/RegistrationDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element : <Contact/>
+      },
+      {
+        path: "/stem_registration",
+        element: <AuthLayout authentication> <EventsRegistration/> </AuthLayout>
+      },
+      {
+        path: "/details",
+        element: <AuthLayout authentication> <RegistrationDetails/> </AuthLayout>
       }
     ],
   },

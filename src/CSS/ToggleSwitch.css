@@ -9,9 +9,12 @@
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
   }
+  .toggle-switch :hover{
+    background-color: #6b21a8;
+  }
   
   .toggle-checkbox:checked + .toggle-switch {
-    background-color: #3db3f3; /* Tailwind's blue-600 */
+    background-color:#da4ea2; /* Tailwind's blue-600 */
   }
   
   .toggle-dot {

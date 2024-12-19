@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import { login } from "../Store/authSlice";
 import { Input, Select, Loader } from "./index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import appwriteService from "../appwrite/auth";
 import { Link } from "react-router-dom";
-import '../CSS/ToggleSwitch.css';
+import '../CSS/ToggleSwitch.css'
 
 function Register() {
   const [error, setError] = useState("");
@@ -19,15 +19,14 @@ function Register() {
   const dispatch = useDispatch();
 
   // Events List must mention here
-  const eventOptions = ["Model Expo", "Sparkore", "Bugged out","Electrivia", "Evolvance"];
+  const eventOptions = ["Model Expo", "Sparkore", "Bugged out", "Electrivia", "Evolvance"];
 
   // Method to handle the register
   const handleRegister = async (data) => {
-    //Start a loader
-    setLoading(true)
+    // Start a loader
+    setLoading(true);
     setError("");
 
-   
     try {
       // First, register the student
       const user = await appwriteService.registerStudents(data);
@@ -68,9 +67,8 @@ function Register() {
       }
       console.error(error);
       toast.error(error.message);
-    }
-    finally {
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,97 +81,165 @@ function Register() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="font-bold text-xl mb-2 text-center">Register</h2>
-      {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
-      <form onSubmit={handleSubmit(handleRegister)} className="space-y-4">
-        <Input
-          label="Full Name"
-          type="text"
-          placeholder="Full Name"
-          className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-          {...register("fullName", { required: "Full name is required" })}
-        />
+    <section className="flex flex-col w-full items-center justify-center bg-cover bg-center bg-no-repeat ">
+      <div className="w-full max-w-lg bg-gray-900 bg-opacity-50 rounded-2xl shadow-2xl p-8">
+        <h2 className="text-4xl font-bold text-center mb-6 text-[#da4ea2]">Register</h2>
 
-          <Input
-            label="Enter College Name"
-            type="text"
-            placeholder="College Name"
-            className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-            {...register("otherCollegeName",{required: true})}
-          />
-        <div>
-          <label className="block mb-2  font-bold">
-            Which is your favorite event?
-          </label>
-          {eventOptions.map((event, index) => (
-            <label
-              key={index}
-              className="flex items-center space-x-2 mb-2 cursor-pointer"
+        {error && (
+          <div className="bg-red-600 bg-opacity-20 text-red-300 p-4 rounded-lg mb-6 text-center">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
+          <div>
+            <label className="block text-gray-300 mb-2">Full Name</label>
+            <Input
+              type="text"
+              placeholder="Enter your full name"
+              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#da4ea2]"
+              {...register("fullName", {
+                required: "Full name is required",
+                minLength: {
+                  value: 2,
+                  message: "Full name must be at least 2 characters"
+                }
+              })}
+              error={errors.fullName?.message}
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 mb-2">College Name</label>
+            <Input
+              type="text"
+              placeholder="Enter your college name"
+              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#da4ea2]"
+              {...register("otherCollegeName", {
+                required: "College name is required"
+              })}
+              error={errors.otherCollegeName?.message}
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 mb-2">Select Your Favorite Events</label>
+            <div className="grid grid-cols-2 gap-3">
+              {eventOptions.map((event, index) => (
+                <label
+                  key={index}
+                  className="flex items-center space-x-2 text-gray-300 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    value={event}
+                    onChange={handleEventSelection}
+                    id={`toggle-${index}`}
+                    className="hidden toggle-checkbox"
+                  />
+                  <div className="toggle-switch">
+                    <div className="toggle-dot"></div>
+                  </div>
+                  <span>{event}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+
+          <div>
+            <label className="block text-gray-300 mb-2">Email</label>
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#da4ea2]"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address"
+                }
+              })}
+              error={errors.email?.message}
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 mb-2">Select Dish Preference</label>
+            <select
+              {...register("dish", { required: "Dish selection is required" })}
+              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#da4ea2]"
             >
-              <input
-                type="checkbox"
-                value={event}
-                onChange={handleEventSelection}
-                className="toggle-checkbox hidden"
-                id={`toggle-${index}`}
-              />
-              <div className="toggle-switch">
-                <div className="toggle-dot"></div>
-              </div>
-              <span className="text-gray-700">{event}</span>
-            </label>
-          ))}
-        </div>
-        <Input
-          label="Email"
-          type="email"
-          placeholder="Email"
-          className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-          {...register("email", { required: "Email is required" })}
-        />
-        <Select
-          label="Select Dish"
-          options={[
-            { value: "Non-veg", label: "Non-veg" },
-            { value: "Veg", label: "Veg" },
-          ]}
-          className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-          {...register("dish", { required: "Dish selection is required" })}
-        />
-        <Input
-          label="Phone Number"
-          type="text"
-          placeholder="Mobile Number"
-          className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-          {...register("mobileNo", {
-            required: "Phone number is required",
-            pattern: {
-              value: /^[0-9]{10}$/, // Adjust regex as needed for your phone number format
-              message: "Phone number must be 10 digits",
-            },
-          })}
-        />
-        <Input
-          label="Password"
-          type="password"
-          placeholder="Password"
-          className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-          {...register("password", { required: "Password is required" })}
-        />
-        <div className="flex items-center justify-end">
-          <p>Already Registered? <Link to='/login' className="text-red-600">Login</Link></p>
-        </div>
-        <button
-          type="submit"
-          className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
-        >
-          Register
-        </button>
-      </form>
-      <ToastContainer />
+              <option value="">Select an option</option>
+              <option value="Non-veg">Non-veg</option>
+              <option value="Veg">Veg</option>
+            </select>
+            {errors.dish && <p className="text-red-500 text-sm mt-1">{errors.dish.message}</p>}
+          </div>
+
+          <div>
+            <label className="block text-gray-300 mb-2">Phone Number</label>
+            <Input
+              type="text"
+              placeholder="Enter your mobile number"
+              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#da4ea2]"
+              {...register("mobileNo", {
+                required: "Phone number is required",
+                pattern: {
+                  value: /^[0-9]{10}$/,
+                  message: "Phone number must be 10 digits"
+                }
+              })}
+              error={errors.mobileNo?.message}
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 mb-2">Password</label>
+            <Input
+              type="password"
+              placeholder="Create a password"
+              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#da4ea2]"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters"
+                }
+              })}
+              error={errors.password?.message}
+            />
+          </div>
+
+          <div className="flex items-center justify-between text-gray-400">
+            <p>
+              Already Registered? <Link to='/login' className="text-[#da4ea2] hover:underline">Login</Link>
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full py-3 bg-[#da4ea2] text-white font-bold rounded-xl
+            hover:bg-purple-700 transition duration-300
+            flex items-center justify-center space-x-2
+            disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? (
+              <>
+                Registering...
+              </>
+            ) : (
+              "Register"
+            )}
+          </button>
+        </form>
+
+        <ToastContainer />
+      </div>
+
       <Loader isLoading={isLoading} />
-    </div>
+    </section>
   );
 }
 

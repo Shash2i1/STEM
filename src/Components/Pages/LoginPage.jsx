@@ -1,12 +1,12 @@
-import React from 'react'
-import Login from '../Login'
+import React from 'react';
+import Login from '../Login';
 
 function LoginPage() {
   return (
-    <div className='bg-gray-200 py-5 px-5'>
-        <Login/>
+    <div className="bg-gray-800 md:py-6 flex items-center justify-center">
+      <Login />
     </div>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;

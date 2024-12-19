@@ -39,13 +39,13 @@ const ProfileModal = ({ isModalOpen, toggleModal }) => {
   if (!isModalOpen) return null;  // If the modal is not open, render nothing
 
   return (
-    <div ref={outsideClickRef} className="absolute top-12 right-0 bg-white p-4 rounded-lg shadow-lg w-48 z-50" >
+    <div ref={outsideClickRef} className="absolute top-12 right-0 bg-gray-900 p-4 rounded-lg shadow-lg w-48 z-50">
       <ul className="flex flex-col gap-4" ref={modalRef}>
         <li>
           <Link
             to="/profile"
             onClick={() => toggleModal(false)} // Close modal after clicking Profile
-            className="text-black hover:text-gray-600"
+            className="text-white hover:text-gray-400"
           >
             Profile
           </Link>
@@ -53,7 +53,7 @@ const ProfileModal = ({ isModalOpen, toggleModal }) => {
         <li>
           <button
             onClick={handleLogout}
-            className="text-black hover:text-gray-600"
+            className="text-white hover:text-gray-400"
           >
             Logout
           </button>

@@ -40,14 +40,14 @@ const Hero = () => {
             <img
               src="./img/stem-2.png"
               alt="STEM Event"
-              className="z-10 max-w-full max-h-full object-contain animate-[move_2s_infinite_ease_alternate]"
+              className="z-10 max-w-full max-h-full object-contain animate-float animate-[move_2s_infinite_ease_alternate]"
             />
           </div>
 
           {/* Left Section - Text */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left space-y-6 order-2 lg:order-1
             opacity-0 animate-fade-in duration-1000 ease-out delay-300">
-            <h1 className="text-4xl lg:text-6xl text-white font-bold  
+            <h1 className="text-4xl lg:text-6xl text-white font-bold 
               opacity-0 animate-slide-in-left duration-700 delay-500">
               STEM-2024
             </h1>
@@ -136,7 +136,7 @@ const Hero = () => {
           animation: slideInLeft 0.6s forwards;
         }
       `}</style>
-      <style>
+       <style>
           {`
           @keyframes move {
             0% {
